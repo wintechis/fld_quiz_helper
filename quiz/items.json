@@ -1,0 +1,550 @@
+{
+    "1": {
+        "title": "Hypertext, the Internet and the Web",
+        "1": {
+            "statement": "The terms 'internet' and 'web' can be used synonymously.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "Metcalfe’s law states that the effect of a network is proportional to the square of the number of users connected to it.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Web links and Web pages form a directed graph.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "The header field 'Accept' in HTTP is sent by the server to indicate the type of requests that the server supports.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "A body of a response to an HTTP request is always in HTML format.",
+            "isTrue": false,
+            "goals": []
+        }      
+    },
+    "2": {
+        "title": "The Linked Data Principles",
+        "1": {
+            "statement": "All data published as Linked Data should be in RDF.",
+            "isTrue": true,
+            "goals": []
+        },
+        "2": {
+            "statement": "In Turtle syntax,  'a' is short for 'One'^^<http://www.w3.org/2001/XMLSchema#integer>.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Blank nodes are allowed on object position of an RDF triple.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "Literals are allowed on subject position of an RDF triple.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "In Turtle syntax, » <#foo> <#bar> false . «   is short for , » <#foo> <#bar> 'false'^^<http://www.w3.org/2001/XMLSchema#boolean> ",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "3": {
+        "title": "The Resource Description Framework",
+        "1": {
+            "statement": "The W3C RDF specification defines the triple data model and a vocabulary.",
+            "isTrue": true,
+            "goals": []
+        },
+        "2": {
+            "statement": "Blank node labels are globally unique identifiers.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Blank nodes can be directly referenced from outside the document in which they are introduced.",
+            "isTrue": false,
+            "goals": []
+        },
+        "4": {
+            "statement": "On the subject position of an RDF triple, any RDF term is allowed.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "One must declare a :rel a rdf:Property . triple before using :rel as predicate in an RDF triple.",
+            "isTrue": false,
+            "goals": []
+        },
+        "6": {
+            "statement": "The following is a valid RDF triple: :Alice [ a :FamilyRelationship ] :Bob .",
+            "isTrue": false,
+            "goals": []
+        },
+        "7": {
+            "statement": "Suitable RDF parsers can transform RDF documents from one serialization to another.",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "Every valid N-Triples document is a valid Turtle document.",
+            "isTrue": true,
+            "goals": []
+        },
+        "9": {
+            "statement": "The following Turtle document: <#s> <#p> ( 'a' 'b' ) . can also be expressed as: <#s> <#p> [ rdf:first 'a' ; rdf:rest [ rdf:first 'b' ; rdf:rest rdf:nil ] ] .",
+            "isTrue": true,
+            "goals": []
+        },
+        "10": {
+            "statement": "A subgraph of an RDF graph is a subset of the RDF terms in the graph.",
+            "isTrue": false,
+            "goals": []
+        },
+        "11": {
+            "statement": "We employ isomorphism to check whether two RDF graphs are equivalent.",
+            "isTrue": true,
+            "goals": []
+        },
+        "12": {
+            "statement": "The merge of two RDF graphs is obtained by taking the union of the triples of the two graphs.",
+            "isTrue": false,
+            "goals": []
+        },
+        "13": {
+            "statement": "Multiple RDF graphs can go into the default graph of an RDF dataset.",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "4": {
+        "title": "Querying RDF Datasets with SPARQL",
+        "1": {
+            "statement": "A basic graph pattern without variables is valid.",
+            "isTrue": true,
+            "goals": []
+        },
+        "2": {
+            "statement": "SPARQL queries are expressed in Turtle syntax.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Turtle abbreviations ',' and ';' are allowed inside the WHERE clause, as are unnamed blank nodes via '[ ]'.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "SELECT DISTINCT filters out duplicate solution mappings.",
+            "isTrue": true,
+            "goals": []
+        },
+        "5": {
+            "statement": "ASK queries return an RDF graph.",
+            "isTrue": false,
+            "goals": []
+        },
+        "6": {
+            "statement": "GRAPH and UNION may lead to unbound solution mappings.",
+            "isTrue": true,
+            "goals": []
+        },
+        "7": {
+            "statement": "Blank nodes in the CONSTRUCT clause lead to new blank nodes (with generated blank node labels) in the solution sequences.",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "SPARQL queries are always translated to SQL queries and then evaluated in a relational database.",
+            "isTrue": false,
+            "goals": []
+        },
+        "9": {
+            "statement": "A SPARQL processor first performs the LIMIT operation before the ORDER BY.",
+            "isTrue": false,
+            "goals": []
+        },
+        "10": {
+            "statement": "In SPARQL, the default graph is always the union of all named graphs.",
+            "isTrue": false,
+            "goals": []
+        }
+    },
+    "5": {
+        "title": "SPARQL Query Processing",
+        "1": {
+            "statement": "A basic graph pattern consists of one or more triple patterns.",
+            "isTrue": true,
+            "goals": []
+        },
+        "2": {
+            "statement": "BGPs may contain blank nodes on subject, predicate, and object position.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Basic graph pattern matching in SPARQL takes into account different lexical forms of literals.",
+            "isTrue": false,
+            "goals": []
+        },
+        "4": {
+            "statement": "Of the operations presented in the last lecture, the BGP operator is the only one that accesses triples.",
+            "isTrue": true,
+            "goals": []
+        },
+        "5": {
+            "statement": "Only one FROM expression is allowed in a SPARQL query.",
+            "isTrue": false,
+            "goals": []
+        },
+        "6": {
+            "statement": "Multiple FILTER expressions are allowed in a SPARQL query. Only solutions that match all of the FILTER expressions are returned.",
+            "isTrue": true,
+            "goals": []
+        },
+        "7": {
+            "statement": "The empty mapping 𝜇_∅ is compatible with any other mapping.",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "The notion of compatibility of solutions can be used to compute the Cartesian product between solution sequences.",
+            "isTrue": true,
+            "goals": []
+        },
+        "9": {
+            "statement": "Filter expressions in SPARQL take into account different lexical forms of literals.",
+            "isTrue": true,
+            "goals": []
+        },
+        "10": {
+            "statement": "The following filter expression returns false: '1'^^xsd:int == (xsd:integer)'1'^^xsd:float",
+            "isTrue": false,
+            "goals": []
+        },
+        "11": {
+            "statement": "Queries with a CONSTRUCT query form may lead to new blank nodes in the query results.",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "6": {
+        "title": "Publishing And Consuming",
+        "1": {
+            "statement": "Open data means that anyone should be able to purchase the data.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "A comma-separated values (CSV) file accessible via HTTP is 4-star open data.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Data published according to the Linked Data principles is 5-star open data.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "The knowledge graph movement embraces a graph-structured approach to representing data.",
+            "isTrue": true,
+            "goals": []
+        },
+        "5": {
+            "statement": "Extract-Transform-Load pipelines materialize data at a central location.",
+            "isTrue": true,
+            "goals": []
+        },
+        "6": {
+            "statement": "In virtual integration systems, the data remains at the source.",
+            "isTrue": true,
+            "goals": []
+        },
+        "7": {
+            "statement": "All SPARQL query processors evaluate queries against a set of endpoints.",
+            "isTrue": false,
+            "goals": []
+        },
+        "8": {
+            "statement": "SPARQL queries can be executed against a set of RDF graphs.",
+            "isTrue": true,
+            "goals": []
+        },
+        "9": {
+            "statement": "According to the SPARQL recommendation, users must specify an endpoint for a federated SPARQL query using the SERVICE clause.",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "7": {
+        "title": "Applications of Linked Data",
+        "1": {
+            "statement": "Enterprise-wide Information Systems have a single data source.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "A decentralized network requires a full mesh topology.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "The Internet is a world-wide information system.",
+            "isTrue": false,
+            "goals": []
+        },
+        "4": {
+            "statement": "System interoperation denotes the combination of functionalities from multiple systems and applications.",
+            "isTrue": true,
+            "goals": []
+        },
+        "5": {
+            "statement": "Virtual integration follows a push architecture.",
+            "isTrue": false,
+            "goals": []
+        },
+        "6": {
+            "statement": "Schemas (schema.org) are typically embedded as Turtle in a HTML script tag.",
+            "isTrue": false,
+            "goals": []
+        },
+        "7": {
+            "statement": "Thing Descriptions inform the Consumer about the capabilities of the Web Thing.",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "OpenRefine is a tool that can be used for the ETL process.",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "8": {
+        "title": "Vocabulary Descriptions and Data Modelling",
+        "1": {
+            "statement": "The W3C RDF specification defines the triple data model and a vocabulary.",
+            "isTrue": true,
+            "goals": []
+        },
+        "2": {
+            "statement": "The following Turtle document: <#s> <#p> ( 'a' 'b' ) . can also be expressed as: <#s> <#p> [ rdf:first 'a' ; rdf:rest [ rdf:first 'b' ; rdf:rest rdf:nil ] ] .",
+            "isTrue": true,
+            "goals": []
+        },
+        "3": {
+            "statement": "RDF containers represent groups of resources.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "One has to declare a :rel a rdf:Property . triple before using :rel as predicate in an RDF triple.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "The class rdfs:Class is the class of all classes and contains itself.",
+            "isTrue": true,
+            "goals": []
+        },
+        "6": {
+            "statement": "A resource can only be a member of a single class.",
+            "isTrue": false,
+            "goals": []
+        },
+        "7": {
+            "statement": "RDFS provides a term for specifying equivalence between classes.",
+            "isTrue": false,
+            "goals": []
+        },
+        "8": {
+            "statement": "A class can be involved in only one rdfs:subClassOf relation.",
+            "isTrue": false,
+            "goals": []
+        },
+        "9": {
+            "statement": "The property rdfs:subClassOf is transitive.",
+            "isTrue": true,
+            "goals": []
+        },
+        "10": {
+            "statement": "From the following Turtle document, we can conclude that :id is an instance of the class :CreativeWork. @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix : <#> . :Book rdfs:subClassOf :CreativeWork . :id a :Book .",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "9": {
+        "title": "Semantics of RDF and RDF Schema Vocabularies",
+        "1": {
+            "statement": "Property restrictions (i.e., rdfs:domain and rdfs:range) are local to a class.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "Interpretations that RDF-satisfy RDF graphs are infinite, due to the axiomatic triples involving rdf:_1, rdf:_2, …",
+            "isTrue": true,
+            "goals": []
+        },
+        "3": {
+            "statement": "The RDF model theory specifies conditions that provide all permutations of elements of an rdf:Bag via container membership properties rdf:_1, rdf:_2, …",
+            "isTrue": false,
+            "goals": []
+        },
+        "4": {
+            "statement": "Given a graph 𝐺, the extension 𝐼_𝐸𝑋𝑇 is larger in interpretations that are RDF models of 𝐺 than in interpretations that are RDFS models of 𝐺.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": ":s :p :o . ⊨_𝑅𝐷𝐹 _:bn1 :p _:bn2 .",
+            "isTrue": true,
+            "goals": []
+        },
+        "6": {
+            "statement": "rdf:type rdf:type rdf:Property . belongs to the axiomatic triples.",
+            "isTrue": true,
+            "goals": []
+        },
+        "7": {
+            "statement": ":s :p :o . ⊨_𝑅𝐷𝐹 :p rdf:type rdf:Property .",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "Consider RDF graph 𝐺_0: <#s> <#p> <#o> . and RDF graph 𝐺_1: <#s> <#p> <#o> . <#p> rdf:type rdf:Property . 𝐺_0 ⊨_𝑅𝐷𝐹 𝐺_1 and 𝐺_1 ⊨_𝑅𝐷𝐹 𝐺_0.",
+            "isTrue": true,
+            "goals": []
+        },
+        "9": {
+            "statement": "Consider RDF graph 𝐺: :weight rdfs:range xsd:float . :s :weight 23 . The graph is RDFS-satisfiable, recognizing { xsd:string, rdf:langString, xsd:float, xsd:integer }.",
+            "isTrue": false,
+            "goals": []
+        },
+        "10": {
+            "statement": "Consider RDF graph 𝐺: _:t rdf:subject :s , rdf:predicate :p, rdf:object :o . 𝐺⊨_𝑅𝐷𝐹  :s :p :o .",
+            "isTrue": false,
+            "goals": []
+        },
+        "11": {
+            "statement": ":c1 a rdfs:Class .   ⊨_𝑅𝐷𝐹𝑆   rdfs:Class a rdfs:Class .",
+            "isTrue": true,
+            "goals": []
+        },
+        "12": {
+            "statement": "The empty graph RDFS-entails the RDFS axiomatic triples.",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "10": {
+        "title": "Data Modelling with the Web Ontology Language",
+        "1": {
+            "statement": "OWL is the acronym for Ontology Web Language.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "Using a symmetric property in a triple specifies equality between subject and object of the triple.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "Class and property equivalence can be expressed in both RDFS and OWL.",
+            "isTrue": true,
+            "goals": []
+        },
+        "4": {
+            "statement": "The following RDF document uses owl:sameAs properly. @prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix dbpedia: <http://dbpedia.org/resource/> . dbpedia:Professor_X owl:sameAs <http://en.wikipedia.org/wiki/Professor_X> .",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "Without further axioms, a resource that is both of type :HumanPerson and :InhumanPerson leads to an unsatisfiable graph.",
+            "isTrue": false,
+            "goals": []
+        },
+        "6": {
+            "statement": "OWL LD includes the definition of the semantics of rdf:Property and rdfs:Resource.",
+            "isTrue": false,
+            "goals": []
+        },
+        "7": {
+            "statement": "The ancestor relation is an example of a transitive relation.",
+            "isTrue": true,
+            "goals": []
+        },
+        "8": {
+            "statement": "The property owl:differentFrom is transitive.",
+            "isTrue": false,
+            "goals": []
+        },
+        "9": {
+            "statement": "Assume graph 𝐺 encoded in Turtle syntax: @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix : <#> . :hasParent rdfs:subPropertyOf :hasAncestor . :hasAncestor a owl:TransitiveProperty . The following holds: 𝐺⊨_(𝑂𝑊𝐿 𝐿𝐷) :hasParent a owl:TransitiveProperty .",
+            "isTrue": false,
+            "goals": []
+        },
+        "10": {
+            "statement": "The following graph leads to an unsatisfiable graph under OWL LD entailment: @prefix : <#> . @prefix owl: <http://www.w3.org/2002/07/owl#> . :divorced owl:propertyDisjointWith :married . :Wolverine :married :ItsuAkihiro . :Wolverine :divorced :ItsuAkihiro .",
+            "isTrue": true,
+            "goals": []
+        }
+    },
+    "11": {
+        "title": "Combining Query Processing with Entailment",
+        "1": {
+            "statement": "The SPARQL recommendation mandates that query processors support RDF entailment by default.",
+            "isTrue": false,
+            "goals": []
+        },
+        "2": {
+            "statement": "To introduce entailment in SPARQL, we extend the 𝐽𝑜𝑖𝑛 operator.",
+            "isTrue": false,
+            "goals": []
+        },
+        "3": {
+            "statement": "A graph with a triple that consists of an RDF literal as subject is called well-formed.",
+            "isTrue": false,
+            "goals": []
+        },
+        "4": {
+            "statement": "Graphs under RDF entailment are finite.",
+            "isTrue": false,
+            "goals": []
+        },
+        "5": {
+            "statement": "For using RDF entailment in SPARQL, query processors restrict the infinite RDF vocabulary.",
+            "isTrue": true,
+            "goals": []
+        },
+        "6": {
+            "statement": "The procedure of replacing blank nodes with constants is called Skolemisation.",
+            "isTrue": true,
+            "goals": []
+        },
+        "7": {
+            "statement": "When restricting the vocabulary, we can guarantee termination for eval-E(), with 𝐸∈{𝑅𝐷𝐹, 𝑅𝐷𝐹𝑆}.",
+            "isTrue": false,
+            "goals": []
+        },
+        "8": {
+            "statement": "Given the following graph 𝐺: <#p> rdfs:range xsd:integer . <#s> <#p> '23' . We can process queries over 𝐺 under ⊨_𝑅𝐷𝐹𝑆, if 𝐷 includes xsd:integer and xsd:string.",
+            "isTrue": false,
+            "goals": []
+        },
+        "9": {
+            "statement": "Logical languages such as RDFS and OWL follow the unique name assumption, which states that different names (URIs, literals) always refer to different resources.",
+            "isTrue": false,
+            "goals": []
+        },
+        "10": {
+            "statement": "The following SPARQL query is monotonic: SELECT ?x WHERE { ?x a <countries#EuropeanCountry> . }",
+            "isTrue": true,
+            "goals": []
+        }
+    }
+}
