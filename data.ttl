@@ -1,0 +1,563 @@
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a ex:Chapter ;
+    rdfs:label "Semantics of RDF and RDF Schema Vocabularies" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "Consider RDF graph 𝐺: _:t rdf:subject :s , rdf:predicate :p, rdf:object :o . 𝐺⊨_𝑅𝐷𝐹  :s :p :o ."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "12"^^xsd:int ;
+            ex:has_statement "The empty graph RDFS-entails the RDFS axiomatic triples."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "Consider RDF graph 𝐺_0: <#s> <#p> <#o> . and RDF graph 𝐺_1: <#s> <#p> <#o> . <#p> rdf:type rdf:Property . 𝐺_0 ⊨_𝑅𝐷𝐹 𝐺_1 and 𝐺_1 ⊨_𝑅𝐷𝐹 𝐺_0."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "Given a graph 𝐺, the extension 𝐼_𝐸𝑋𝑇 is larger in interpretations that are RDF models of 𝐺 than in interpretations that are RDFS models of 𝐺."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "Property restrictions (i.e., rdfs:domain and rdfs:range) are local to a class."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement ":s :p :o . ⊨_𝑅𝐷𝐹 _:bn1 :p _:bn2 ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "rdf:type rdf:type rdf:Property . belongs to the axiomatic triples."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "11"^^xsd:int ;
+            ex:has_statement ":c1 a rdfs:Class .   ⊨_𝑅𝐷𝐹𝑆   rdfs:Class a rdfs:Class ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "The RDF model theory specifies conditions that provide all permutations of elements of an rdf:Bag via container membership properties rdf:_1, rdf:_2, …"^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "Consider RDF graph 𝐺: :weight rdfs:range xsd:float . :s :weight 23 . The graph is RDFS-satisfiable, recognizing { xsd:string, rdf:langString, xsd:float, xsd:integer }."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement ":s :p :o . ⊨_𝑅𝐷𝐹 :p rdf:type rdf:Property ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "Interpretations that RDF-satisfy RDF graphs are infinite, due to the axiomatic triples involving rdf:_1, rdf:_2, …"^^xsd:string ;
+            ex:is_True true ] ;
+    ex:has_no "9"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "The Resource Description Framework" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "The following is a valid RDF triple: :Alice [ a :FamilyRelationship ] :Bob ."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Blank nodes can be directly referenced from outside the document in which they are introduced."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "One must declare a :rel a rdf:Property . triple before using :rel as predicate in an RDF triple."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "11"^^xsd:int ;
+            ex:has_statement "We employ isomorphism to check whether two RDF graphs are equivalent."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "The following Turtle document: <#s> <#p> ( 'a' 'b' ) . can also be expressed as: <#s> <#p> [ rdf:first 'a' ; rdf:rest [ rdf:first 'b' ; rdf:rest rdf:nil ] ] ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "12"^^xsd:int ;
+            ex:has_statement "The merge of two RDF graphs is obtained by taking the union of the triples of the two graphs."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "Every valid N-Triples document is a valid Turtle document."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "A subgraph of an RDF graph is a subset of the RDF terms in the graph."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "The W3C RDF specification defines the triple data model and a vocabulary."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "On the subject position of an RDF triple, any RDF term is allowed."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "Suitable RDF parsers can transform RDF documents from one serialization to another."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "Blank node labels are globally unique identifiers."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "13"^^xsd:int ;
+            ex:has_statement "Multiple RDF graphs can go into the default graph of an RDF dataset."^^xsd:string ;
+            ex:is_True true ] ;
+    ex:has_no "3"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "The Linked Data Principles" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "In Turtle syntax, » <#foo> <#bar> false . «   is short for , » <#foo> <#bar> 'false'^^<http://www.w3.org/2001/XMLSchema#boolean> "^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "All data published as Linked Data should be in RDF."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "Literals are allowed on subject position of an RDF triple."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "In Turtle syntax,  'a' is short for 'One'^^<http://www.w3.org/2001/XMLSchema#integer>."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Blank nodes are allowed on object position of an RDF triple."^^xsd:string ;
+            ex:is_True true ] ;
+    ex:has_no "2"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Publishing And Consuming" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "SPARQL queries can be executed against a set of RDF graphs."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "The knowledge graph movement embraces a graph-structured approach to representing data."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "In virtual integration systems, the data remains at the source."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "According to the SPARQL recommendation, users must specify an endpoint for a federated SPARQL query using the SERVICE clause."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "A comma-separated values (CSV) file accessible via HTTP is 4-star open data."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "Open data means that anyone should be able to purchase the data."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Data published according to the Linked Data principles is 5-star open data."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "Extract-Transform-Load pipelines materialize data at a central location."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "All SPARQL query processors evaluate queries against a set of endpoints."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "6"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "SPARQL Query Processing" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "Only one FROM expression is allowed in a SPARQL query."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "Of the operations presented in the last lecture, the BGP operator is the only one that accesses triples."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "Multiple FILTER expressions are allowed in a SPARQL query. Only solutions that match all of the FILTER expressions are returned."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "11"^^xsd:int ;
+            ex:has_statement "Queries with a CONSTRUCT query form may lead to new blank nodes in the query results."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "The following filter expression returns false: '1'^^xsd:int == (xsd:integer)'1'^^xsd:float"^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "A basic graph pattern consists of one or more triple patterns."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Basic graph pattern matching in SPARQL takes into account different lexical forms of literals."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "The notion of compatibility of solutions can be used to compute the Cartesian product between solution sequences."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "BGPs may contain blank nodes on subject, predicate, and object position."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "The empty mapping 𝜇_∅ is compatible with any other mapping."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "Filter expressions in SPARQL take into account different lexical forms of literals."^^xsd:string ;
+            ex:is_True true ] ;
+    ex:has_no "5"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Combining Query Processing with Entailment" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "The SPARQL recommendation mandates that query processors support RDF entailment by default."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "Graphs under RDF entailment are finite."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "The procedure of replacing blank nodes with constants is called Skolemisation."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "To introduce entailment in SPARQL, we extend the 𝐽𝑜𝑖𝑛 operator."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "For using RDF entailment in SPARQL, query processors restrict the infinite RDF vocabulary."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "Given the following graph 𝐺: <#p> rdfs:range xsd:integer . <#s> <#p> '23' . We can process queries over 𝐺 under ⊨_𝑅𝐷𝐹𝑆, if 𝐷 includes xsd:integer and xsd:string."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "A graph with a triple that consists of an RDF literal as subject is called well-formed."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "Logical languages such as RDFS and OWL follow the unique name assumption, which states that different names (URIs, literals) always refer to different resources."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "When restricting the vocabulary, we can guarantee termination for eval-E(), with 𝐸∈{𝑅𝐷𝐹, 𝑅𝐷𝐹𝑆}."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "The following SPARQL query is monotonic: SELECT ?x WHERE { ?x a <countries#EuropeanCountry> . }"^^xsd:string ;
+            ex:is_True true ] ;
+    ex:has_no "11"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Data Modelling with the Web Ontology Language" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "Using a symmetric property in a triple specifies equality between subject and object of the triple."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "The ancestor relation is an example of a transitive relation."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Class and property equivalence can be expressed in both RDFS and OWL."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "OWL LD includes the definition of the semantics of rdf:Property and rdfs:Resource."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "The following RDF document uses owl:sameAs properly. @prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix dbpedia: <http://dbpedia.org/resource/> . dbpedia:Professor_X owl:sameAs <http://en.wikipedia.org/wiki/Professor_X> ."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "OWL is the acronym for Ontology Web Language."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "The property owl:differentFrom is transitive."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "Without further axioms, a resource that is both of type :HumanPerson and :InhumanPerson leads to an unsatisfiable graph."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "The following graph leads to an unsatisfiable graph under OWL LD entailment: @prefix : <#> . @prefix owl: <http://www.w3.org/2002/07/owl#> . :divorced owl:propertyDisjointWith :married . :Wolverine :married :ItsuAkihiro . :Wolverine :divorced :ItsuAkihiro ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "Assume graph 𝐺 encoded in Turtle syntax: @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix : <#> . :hasParent rdfs:subPropertyOf :hasAncestor . :hasAncestor a owl:TransitiveProperty . The following holds: 𝐺⊨_(𝑂𝑊𝐿 𝐿𝐷) :hasParent a owl:TransitiveProperty ."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "10"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Vocabulary Descriptions and Data Modelling" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "A resource can only be a member of a single class."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "From the following Turtle document, we can conclude that :id is an instance of the class :CreativeWork. @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix : <#> . :Book rdfs:subClassOf :CreativeWork . :id a :Book ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "A class can be involved in only one rdfs:subClassOf relation."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "The following Turtle document: <#s> <#p> ( 'a' 'b' ) . can also be expressed as: <#s> <#p> [ rdf:first 'a' ; rdf:rest [ rdf:first 'b' ; rdf:rest rdf:nil ] ] ."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "RDFS provides a term for specifying equivalence between classes."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "RDF containers represent groups of resources."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "The property rdfs:subClassOf is transitive."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "The class rdfs:Class is the class of all classes and contains itself."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "The W3C RDF specification defines the triple data model and a vocabulary."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "One has to declare a :rel a rdf:Property . triple before using :rel as predicate in an RDF triple."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "8"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Applications of Linked Data" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "The Internet is a world-wide information system."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "OpenRefine is a tool that can be used for the ETL process."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "A decentralized network requires a full mesh topology."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "Virtual integration follows a push architecture."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "System interoperation denotes the combination of functionalities from multiple systems and applications."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "Schemas (schema.org) are typically embedded as Turtle in a HTML script tag."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "Thing Descriptions inform the Consumer about the capabilities of the Web Thing."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "Enterprise-wide Information Systems have a single data source."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "7"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Hypertext, the Internet and the Web" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Web links and Web pages form a directed graph."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "A body of a response to an HTTP request is always in HTML format."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "The header field 'Accept' in HTTP is sent by the server to indicate the type of requests that the server supports."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "Metcalfe’s law states that the effect of a network is proportional to the square of the number of users connected to it."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "The terms 'internet' and 'web' can be used synonymously."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "1"^^xsd:int .
+
+[] a ex:Chapter ;
+    rdfs:label "Querying RDF Datasets with SPARQL" ;
+    ex:has_item [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "9"^^xsd:int ;
+            ex:has_statement "A SPARQL processor first performs the LIMIT operation before the ORDER BY."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "8"^^xsd:int ;
+            ex:has_statement "SPARQL queries are always translated to SQL queries and then evaluated in a relational database."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "10"^^xsd:int ;
+            ex:has_statement "In SPARQL, the default graph is always the union of all named graphs."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "7"^^xsd:int ;
+            ex:has_statement "Blank nodes in the CONSTRUCT clause lead to new blank nodes (with generated blank node labels) in the solution sequences."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "4"^^xsd:int ;
+            ex:has_statement "SELECT DISTINCT filters out duplicate solution mappings."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "6"^^xsd:int ;
+            ex:has_statement "GRAPH and UNION may lead to unbound solution mappings."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "1"^^xsd:int ;
+            ex:has_statement "A basic graph pattern without variables is valid."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "3"^^xsd:int ;
+            ex:has_statement "Turtle abbreviations ',' and ';' are allowed inside the WHERE clause, as are unnamed blank nodes via '[ ]'."^^xsd:string ;
+            ex:is_True true ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "5"^^xsd:int ;
+            ex:has_statement "ASK queries return an RDF graph."^^xsd:string ;
+            ex:is_True false ],
+        [ a ex:QuizItem ;
+            ex:has_answer ""^^xsd:string ;
+            ex:has_no "2"^^xsd:int ;
+            ex:has_statement "SPARQL queries are expressed in Turtle syntax."^^xsd:string ;
+            ex:is_True false ] ;
+    ex:has_no "4"^^xsd:int .
+

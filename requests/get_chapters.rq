@@ -1,0 +1,10 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+
+SELECT ?label ?no
+{
+    _:chapter   a   ex:Chapter ;
+        rdfs:label  ?label ;
+        ex:has_no   ?no    .
+    #PLACEHOLDER
+}

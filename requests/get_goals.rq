@@ -1,0 +1,16 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+
+SELECT ?description ?chapter_no ?no
+{
+    _:goal  a                   ex:LearningGoal     ;
+            ex:has_description  ?description        ;
+            ex:has_no           ?no                 ;
+            ex:has_chapter      _:chapter           .
+           
+    _:chapter   ex:has_no       ?chapter_no         .
+
+    ex:has_goal 
+}
+
+

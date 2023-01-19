@@ -1,0 +1,15 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+
+SELECT ?statement ?isTrue ?answer ?no ?chapter_no
+{
+    _:item  a   ex:QuizItem                      ;
+            ex:has_statement    ?statement       ;
+            ex:is_True          ?isTrue          ;
+            ex:has_answer       ?answer          ;
+            ex:has_no           ?no              .
+            
+    _:chapter   ex:has_item     _:item           ;
+            ex:has_no       ?chapter_no          .
+    #PLACEHOLDER 
+}

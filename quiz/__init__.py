@@ -1,17 +1,18 @@
 import os
 
 from flask import Flask
-from . import db
-from . import quiz
+#from . import db
+#from . import quiz
 from . import export
 from . import input
+from . import rdfquiz
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'quiz.sqlite'),
+    #    DATABASE=os.path.join(app.instance_path, 'quiz.sqlite'),
     )
 
     if test_config is None:
@@ -32,9 +33,10 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    db.init_app(app)
-    app.register_blueprint(quiz.bp)
-    app.register_blueprint(export.bp)
-    app.register_blueprint(input.bp)
+    # db.init_app(app)
+    # app.register_blueprint(quiz.bp)
+    # app.register_blueprint(export.bp)
+    # app.register_blueprint(input.bp)
+    app.register_blueprint(rdfquiz.bp)  
 
     return app

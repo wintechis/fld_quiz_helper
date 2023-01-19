@@ -63,8 +63,8 @@ def select_items(s: Settings) -> List[QuizItem]:
     return lst
 
 if __name__ == '__main__':
-    c = get_chapters('1 , 2 -4 , 13, abb13, ab')
-    s = Settings(5, c , 2)
+    c = get_chapters('1-10')
+    s = Settings(10, c , 2)
     print(create_LaTeX(select_items(s)))
 
 

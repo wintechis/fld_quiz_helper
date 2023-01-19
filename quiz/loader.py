@@ -47,6 +47,24 @@ class QuizItem:
     goals: List[str]
     answer: str=''
 
+@dataclass
+class Chapter:
+    title: str
+    no: int
+
+@dataclass
+class LearningGoal:
+    chapter_no: int
+    no: int
+    description: str
+
+def add_goals(lst: List[str]) -> List[LearningGoal]:
+    l = ()
+    for i in lst:
+        chapter_no, no = i.replace('G', '').split('.')
+        l.append(LearningGoal(chapter_no, no))
+    return l
+
 
 # change dir
 with open('quiz/items.json', mode='r', encoding='utf-8') as f:
@@ -55,6 +73,8 @@ with open('quiz/items.json', mode='r', encoding='utf-8') as f:
 
 for key, value in DATA.items():
     for k, val in value.items():
+        if k=='title':
+            chapter = Chapter(val, int(key))
         if k.isnumeric():
             value[k] = QuizItem(value[k]['statement'], value[k]['isTrue'], value[k]['goals'])
 
