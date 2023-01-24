@@ -7,4 +7,4 @@ SELECT ?label ?no
         rdfs:label  ?label ;
         ex:has_no   ?no    .
     #PLACEHOLDER
-}
+} ORDER BY ?no

@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flask - WTF - Quiz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  </head>
-  <style type="text/css">
-    .container {
-      max-width: 500px;
-    }
-  </style>
-  <body>
+{% extends "quiz.html" %}
+
+
+{% block content %}
     <div class="container">
         <h3>C{{chapter.no}}: {{chapter.label}}</h3>
         <details>
             <summary>Learning Goal: {{chapter.no}}.xx</summary>
             <p>xx</p>
         </details>
-        <form id="radio" action="{{request.url}}" method="POST" role="form">
+        <form id="radio" action="{{request.base_url}}" method="POST" role="form">
             <div class="statement">
-                <h2 id="demo">{{ quiz_item.statement }}</h2>
+                <h3 id="demo">{{ quiz_item.statement }}</h3>
             </div><br>
-            <div class = "answer">
+            <div>
               {{ form.hidden_tag() }}
-              {{ form.isTrue(onclick="submitForm()")}}
+              {% for subfield in form.isTrue %}
+              <div class="form-check" >
+                  {{ subfield(onclick="submitForm()")}}
+                  {{ subfield.label }}
+              </div>
+          {% endfor %}
             </div>
             
             {% if g.answered %}
@@ -33,17 +29,21 @@
                 <p>{{quiz_item.answer}}</p>
             </details>
             {% endif %}
-        </form>
-            <form action="{{request.url}}" method="GET">
-              {{next.submit}}
-            </form>
+          
+
+          </form>
+          <a class="btn btn-primary" href="{{request.base_url}}">Next</a>
         </div>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script>
-      function submitForm() {
-        document.getElementById('radio').submit();
-      }
-    </script>
-  </body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script>
+  function submitForm() {
+    document.getElementById('radio').submit();
+  }
+  {{super()}}
+</script>
+{% endblock %}
+

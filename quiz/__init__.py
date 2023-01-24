@@ -1,17 +1,26 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 #from . import db
 #from . import quiz
 from . import export
 from . import input
 from . import rdfquiz
+from . import index
+from datetime import timedelta
+
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    Bootstrap(app)
     app.config.from_mapping(
         SECRET_KEY='dev',
+        SESSION_PERMANENT = True,
+        SESSION_TYPE = 'filesystem',
+        PERMANENT_SESSION_LIFETIME= timedelta(hours=1),
+        SESSION_FILE_THRESHOLD = 1000 
     #    DATABASE=os.path.join(app.instance_path, 'quiz.sqlite'),
     )
 
@@ -28,15 +37,16 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+   
 
     # db.init_app(app)
     # app.register_blueprint(quiz.bp)
-    # app.register_blueprint(export.bp)
     # app.register_blueprint(input.bp)
-    app.register_blueprint(rdfquiz.bp)  
+    app.register_blueprint(rdfquiz.bp)
+    app.register_blueprint(index.bp)
+    app.register_blueprint(export.bp)
+  
 
     return app
+
+

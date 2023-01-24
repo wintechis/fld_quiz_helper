@@ -1,41 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flask - WTF - Quiz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  </head>
-  <style type="text/css">
-    .container {
-      max-width: 500px;
-    }
-  </style>
-  <body>
-    <div class="container">
-        {% if explanation %}
-            <details style="color:{{ 'green' if is_correct == 'right' else 'red'}};">
-                <summary><b>You are {{is_correct}}! Click for explanation.</b></summary>
-                <p>{{explanation}}</p>
-            </details>
-        {% endif %}
-        <h3>C{{chapter_number}}: {{chapter_name}}</h3>
-        <details>
-            <summary>Learning Goal: {{chapter_number}}.{{lg_number}}</summary>
-            <p>{{lg_description}}</p>
-        </details>
-        <form action="/" method="POST" role="form">
-                {% for question in form %}
-                    <div class="question">
-                        <h2>{{ question.label }}</h2>
-                    </div><br>
-                    <div class = "answer">
-                        {{ question }}
-                    </div>
-                {% endfor %}
-                <input type="submit" value = "Submit" />
-            </form>
-        </div>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </body>
-</html>
+{% extends "bootstrap/base.html" %}
+{% block title %}FLD Quiz{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header" style="background-color:whitesmoke;">
+        <a class="navbar-brand" href="https://www.ti.rw.fau.de/">
+            <img src="https://www.ti.rw.fau.de/files/2019/03/cropped-longTxt-1.png" alt="Bootstrap" width="50" style="display: block;margin-left: auto;margin-right: auto;">
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+            <a href="/">Home</a>
+        </li>
+        {% for c in session['chapters'] %}
+        <li class="active">
+            <a href="/quiz/{{c['no']}}">{{c['no']}}</a>
+        </li>
+      {% endfor %} 
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+
+
+

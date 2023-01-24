@@ -1,6 +1,5 @@
 from typing import List
-from loader import QuizItem
-
+from .myDataclasses import QuizItem
 
 
 
@@ -26,7 +25,7 @@ def create_LaTeX(items: List[QuizItem]):
 def add_items(items: List[QuizItem]) -> str:
     s = ''
     for item in items:
-        s += add_quiz_item(item.statement, item.isTrue, item.goals)
+        s += add_quiz_item(item.statement, item.isTrue, item.goals if item.goals else [])
     return s
 
 def add_quiz_item(statement: str, is_true: bool, goals: List[str]) -> str:

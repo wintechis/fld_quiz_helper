@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}FLD Quiz{% endblock %}
+
+{% block content %}
+<form id='generate' action="{{request.base_url}}" method="POST" role="form">
+    <table class="table">
+        <tbody>
+        {% for item in form %}
+        <tr>
+            <td>{{item.label}}</td>
+            <td>{{item}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+    <!-- The button used to copy the text -->
+    <button onclick="copy_latex()" style="font-size:24px"><i class="fa fa-clipboard" ></i></button>
+    <p ><pre><code class="language-latex" contenteditable="true" id="latex-field">{{session.get('latex', '')}}</code></pre></p>
+{% endblock %}
+
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='vs.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.14.0/css/ace.min.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{url_for('static', filename='lined-textarea.js')}}"></script>
+    <script src="{{url_for('static', filename='highlight.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.14.0/src-min-noconflict/ace.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        function copy_latex() {
+          // Get the text field
+          var copyText = document.getElementById("latex-field");
+          // Copy the text inside the text field
+          navigator.clipboard.writeText(copyText.innerHTML);
+          alert("Copied Latex script to clipboard.")
+        }
+        </script>
+    {{super()}}
+{% endblock %}
+
+
+
+

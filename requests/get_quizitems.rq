@@ -12,4 +12,4 @@ SELECT ?statement ?isTrue ?answer ?no ?chapter_no
     _:chapter   ex:has_item     _:item           ;
             ex:has_no       ?chapter_no          .
     #PLACEHOLDER 
-}
+} ORDER BY ?chapter_no ?no
