@@ -42,6 +42,12 @@ Replace 'dev' as the SECRET_KEY with the generated key.
 flask --app quiz --debug run
 ```
 
+## Create Turtle Document form JSON File
+If it is easier for you to edit a JSON File instead of the Turtle document, you can generate the data.ttl in the quiz folder with:
+```python
+python json2turtle.py NAME_OF_JSON_FILE
+``` 
+
 ## Generate Latex script
 The Web application can generate a LaTeX script from Quizitems that can be used in the exam template which is used for the course's exam at the moment. The exam template source code is available on [GitHub](https://github.com/wintechis/LaTeX-Exam-Template) and [Overleaf](https://www.overleaf.com/latex/templates/exam-template/tvmcvkrhgqzx)
 
