@@ -1,25 +1,27 @@
 from flask_wtf import FlaskForm
 from wtforms import RadioField, StringField, IntegerField, SelectField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, NumberRange, Regexp, DataRequired
-from typing import Dict, Any
+from wtforms.validators import ValidationError, NumberRange, Regexp, Optional, InputRequired
+
 
 
 class ExportSettings(FlaskForm):
     class Meta:
         csrf = False
-    no_items            = IntegerField('# Items', )
-    chapters            = StringField('Chapters', description="Example: 1-3,5,9") 
+    no_items            = IntegerField('# Items')
+    chapters            = StringField('Chapters') 
     max_per_chapter     = IntegerField('Max per chapter')
-    ordered             = BooleanField('Ordered')
+    ordered             = BooleanField('Ordered', )
     submit              = SubmitField('Generate')
 
-    # def __init__(self, chapter_range: str, len_items: int,  **kwargs):
-    #     super().__init__(**kwargs)
-    #     ExportSettings.chapters.default = 
-    #     # self.no_items.validators = [DataRequired(), NumberRange(min(1, len_items), len_items)]
-    #     # self.chapters.validators = [Regexp('([1-9][0-9]?|[1-9][0-9]?\-[1-9][0-9]?)')]
-    #     # self.max_per_chapter     = [DataRequired()]
-        
+    def __init__(self, len_items, **kw):
+        super().__init__(**kw)
+        self.add_validators(len_items)
+
+    def add_validators(self, len_items):
+        self.no_items.render_kw = {'min':min(1, len_items ), 'max':len_items}
+        self.no_items.validators = [InputRequired()]
+        self.max_per_chapter.validators = [InputRequired()]
+
 
 
 class PopQuiz(FlaskForm):
@@ -27,26 +29,25 @@ class PopQuiz(FlaskForm):
         csrf = False
     isTrue = RadioField(choices=[('True', 'True'), ('False', 'False')], validate_choice=False)
 
-class Next(FlaskForm):
-    class Meta:
-        csrf = False
-    submit = SubmitField('Next')
 
-class ChapterInput(FlaskForm):
-    no   = IntegerField('Chapter No.')
-    name = StringField('Name')
 
-class LearningGoalInput(FlaskForm):
-    id          = IntegerField('ID') #, render_kw={'readonly': True})
-    chapter_no  = SelectField('Chapter No.')
-    no          = IntegerField('Learning Goal No.')
-    description = StringField('Description')
 
-class QuizItemInput(FlaskForm):
-    id          = IntegerField('ID')
-    chapter_no  = SelectField('Chapter No.')
-    #lg_no      = SelectField('Learning Goal No.')   
-    no          = IntegerField('Item No.')
-    statement   = StringField('statement')
-    isTrue      = BooleanField('isTrue')
-    answer      = StringField('answer')
+#TODO Add Edit Forms for Dataset
+# class ChapterInput(FlaskForm):
+#     no   = IntegerField('Chapter No.')
+#     name = StringField('Name')
+
+# class LearningGoalInput(FlaskForm):
+#     id          = IntegerField('ID') #, render_kw={'readonly': True})
+#     chapter_no  = SelectField('Chapter No.')
+#     no          = IntegerField('Learning Goal No.')
+#     description = StringField('Description')
+
+# class QuizItemInput(FlaskForm):
+#     id          = IntegerField('ID')
+#     chapter_no  = SelectField('Chapter No.')
+#     #lg_no      = SelectField('Learning Goal No.')   
+#     no          = IntegerField('Item No.')
+#     statement   = StringField('statement')
+#     isTrue      = BooleanField('isTrue')
+#     answer      = StringField('answer')

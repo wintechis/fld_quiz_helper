@@ -6,17 +6,24 @@ from .etc import get_items, resolve_chapters
 
 
 class DoesNotComputeExeption(Exception):
-    pass
+    def __init__(self, no_items: int, len_chapters: int, max_per_chapter: int):
+        self.message = f'"# Items" must be greater than "Chapters" times "Max per chapter": {no_items} > {len_chapters} x {max_per_chapter}'
+
+class TooFewItemsException(Exception):
+    def __init__(self, target: int, available: int):
+         self.message = f'Only {available} Quizitems are available, but {target} Quizitems were requested. Please refine your selection!'
 
 
 def select_items(s: Settings) -> List[QuizItem]:
     if len(s.chapters) * s.max_per_chapter < s.no_items:
-        raise DoesNotComputeExeption
+        raise DoesNotComputeExeption(s.no_items, len(s.chapters), s.max_per_chapter)
     
     items = get_items(s.chapters)
 
     item_per_chapter = {}
-    for _ in range(s.no_items):
+    for i in range(s.no_items):
+        if not len(items): 
+            raise TooFewItemsException(s.no_items, i)
         while True:
             item = random.choice(items)
             k = item['chapter'].no

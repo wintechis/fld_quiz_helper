@@ -1,14 +1,16 @@
-from typing import List, Dict, Any, Set
+from typing import List, Dict, Any, Set, Union
 import os
 from flask import session
 import rdflib
 from .myDataclasses import Chapter, QuizItem, LearningGoal
 
 
+DATA_PATH = f'{os.path.dirname(__file__)}/data.ttl'
+
 def add_chapters_session():
     if not session.get('chapters'):
-        print('again')
-        graph = load_graph('data.ttl')
+        print(DATA_PATH)
+        graph = load_graph(DATA_PATH)
         session['chapters'] = get_chapters(graph)
 
 
@@ -32,15 +34,17 @@ def get_query(path: str):
         return f.read() 
 
 
-def get_item_cls(dct: Dict[str, Any]) -> QuizItem:
+def get_item_cls(dct: Union[Dict[str, Any], QuizItem]) -> QuizItem:
+    if isinstance(dct, QuizItem): return dct
     return QuizItem(dct['statement'], dct['isTrue'], dct['answer'])
 
-def get_chapter_cls(dct: Dict[str, Any]) -> Chapter:
-    return Chapter(dct['label'], dct['no']) 
+def get_chapter_cls(dct: Union[Dict[str, Any], Chapter]) -> Chapter:
+    if isinstance(dct, Chapter): return dct
+    return Chapter(label=dct['label'], no=dct['no']) 
 
 def get_items(chapter_nos: Set[str]) -> List[Dict[str, Any]]:
     # load graph
-    graph = load_graph('data.ttl')
+    graph = load_graph(DATA_PATH)
 
     query = get_query('get_quizitems.rq')
     # add FILTER statement
@@ -73,17 +77,20 @@ def replace_placeholder(query: str, var: str, values: Set[str]) -> str:
     return  query.replace('#PLACEHOLDER', f'FILTER({"||".join(expr)})')
 
 
-def resolve_chapters(input: str) -> set[str]:
+def resolve_chapters(input: str) -> set[str]: 
     chapters = set()
-    lst_input = input.replace(' ', '').replace(';', ',').split(',')
-    for val in lst_input:
-        if '-' in val:
-            lower, upper = min(val.split('-')), max(val.split('-'))
-            chapters.update(expand_range(int(lower), int(upper)))
-        elif val.isnumeric():
-            chapters.add(val)
-        continue
-
+    if input:
+        lst_input = input.replace(' ', '').replace(';', ',').split(',')
+        if isinstance(lst_input, str):
+            lst_input = [lst_input]
+        for val in lst_input:
+            if '-' in val:
+                x = list(map(int, val.split('-')))
+                lower, upper = min(x), max(x)
+                chapters.update(expand_range(lower, upper))
+            elif val.isnumeric():
+                chapters.add(val)
+            continue
     return chapters
 
 def expand_range(lower: int, upper: int) -> set[str]:

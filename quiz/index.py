@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory
+    Blueprint, render_template, send_from_directory
 )
 from .etc import add_chapters_session
 import os

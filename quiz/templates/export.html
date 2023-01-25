@@ -1,7 +1,18 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}FLD Quiz{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
+<h1>LaTeX Export</h1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+ 
 <form id='generate' action="{{request.base_url}}" method="POST" role="form">
     <table class="table">
         <tbody>
@@ -20,17 +31,14 @@
 {% endblock %}
 
 {% block styles %}
-    {{super()}}
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='vs.min.css')}}">
-    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.14.0/css/ace.min.css" rel="stylesheet"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{super()}}
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{url_for('static', filename='lined-textarea.js')}}"></script>
     <script src="{{url_for('static', filename='highlight.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.14.0/src-min-noconflict/ace.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script>
         function copy_latex() {
