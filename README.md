@@ -23,7 +23,7 @@ If you want to answer randomly quizitems from multiple chapters, you can edit th
 
 1. Clone the repository
 ```
-git clone https://github.com/wintechis/fld_quiz_helper
+git clone https://github.com/wintechis/fld_quiz_helper.git
 ```
 
 2. Create a virtual environment
