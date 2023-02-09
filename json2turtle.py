@@ -6,7 +6,7 @@ import argparse
 import os
 
 NS = rdflib.Namespace("http://example.org/")
-TARGET = 'data.ttl'
+TARGET = 'quiz/data.ttl'
 
 def add_quiz_item(g:rdflib.Graph, c: rdflib.BNode, no: str, q: QuizItem) -> None:
     item = rdflib.BNode() # store implementations should store value
@@ -33,7 +33,7 @@ def dct2graph(data: Dict[str, Any]) -> rdflib.Graph():
             if isinstance(v, QuizItem):
                 add_quiz_item(g,  c=chapter, no=k, q=v)
             else:
-                g.add((chapter, rdflib.RDFS.label, rdflib.Literal(v)))
+                g.add((chapter, rdflib.RDFS.label, rdflib.Literal(v.label)))
                 g.add((chapter, NS.has_no , rdflib.Literal(key, datatype=rdflib.XSD.int)))
                 g.add((chapter, rdflib.RDF.type, NS.Chapter))
     return g

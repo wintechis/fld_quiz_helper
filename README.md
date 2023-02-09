@@ -1,19 +1,29 @@
+![Example](./quiz-helper.gif)
+
 # FLD Quiz Helper
 
 FLD Quiz Helper is a Web application to practice Semantic Web knowledge. It is a supplementary tool for the course [Foundations of Linked Data](https://www.ti.rw.fau.de/courses/foundations-of-linked-data/) offered at the [Friedrich-Alexander-Universität Erlangen Nürnberg](https://www.fau.de). The quiz consists of statements which are part of the course that are true or false and are structured by chapters. The course's exam normally contains a task where statements must be checked. The application serves as an option for students to practice interactively.
 
-Test [live demo](https://www.quiz.fld.paul.ti.rw.fau.de/)
-
+## Roadmap
+* Create RDF document from JSON (done)
+* Download RDF document (done)
+* Return quiz items by chapter (done)
+* Return quiz items by chapter set (done)
+* Generate LaTeX script for FLD exam (done)
+* Add learning goals and explanation to dataset (in planning)
+* Escape special symbols for LaTex script (in planning)
+* Support typographical emphasis in quiz form (in planning)
 
 ## Quiz
 The available chapters are shown by their number in the navigation bar. Select a specific number to answer only quizitems of this chapter. The active quizitem is randomly chosen.
 If you want to answer randomly quizitems from multiple chapters, you can edit the endroute. For instance, ".../quiz/1,3-5,11" will consider quizitems from the chapters 1,3,4,5, and 11. Or you use "/quiz/all" as endroute to consider all chapters.
 
+
 ## Install
 
 1. Clone the repository
-```python
-
+```
+git clone https://github.com/wintechis/fld_quiz_helper
 ```
 
 2. Create a virtual environment
